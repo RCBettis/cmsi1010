@@ -28,7 +28,7 @@ print("Type 'help' to get a list of all the things you can do")
 print()
 keep_going = True
 while keep_going:
-    response = input("What would you like to do? ")
+    response = input("What would you like to do? ").strip().lower()
     if response == "help":
         show_help()
     elif response == "see":
