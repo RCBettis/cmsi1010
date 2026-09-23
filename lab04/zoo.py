@@ -13,12 +13,12 @@ def show_all_animals():
 
 
 def pet_animal(animal):
-    if animal == "Clover":
-        print("Clover is so happy! ❤️")
-    elif animal == "Coco":
-        print("Coco the Baby Goat thanks you! 🥰")
-    elif animal == "Arno":
-        print("Actually, we cannot allow you to pet Arno. ⛔️")
+    if animal == "clover":
+        print("clover is so happy! ❤️")
+    elif animal == "coco":
+        print("coco the Baby Goat thanks you! 🥰")
+    elif animal == "arno":
+        print("Actually, we cannot allow you to pet arno. ⛔️")
     else:
         print("Sorry, I don't know that animal")
 
