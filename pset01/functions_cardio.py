@@ -62,8 +62,7 @@ def is_palindrome(s):
     implement it as a simple check to see if s is equal to its
     reversal.
     """
-    # replace the pass statement with your code
-    pass
+    return s == s[::-1]
 
 
 def factorial(n):
@@ -74,8 +73,10 @@ def factorial(n):
     positive integers less than or equal to n. Please implement this
     function with a for loop.
     """
-    # replace the pass statement with your code
-    pass
+    product=1
+    for i in range (1, n+1):
+        product *= i
+    return product
 
 
 def count_of_latin_vowels(s):
@@ -85,16 +86,21 @@ def count_of_latin_vowels(s):
     The vowels are 'a', 'e', 'i', 'o', and 'u'. You can implement this
     function using a for loop to iterate through the string.
     """
-    # replace the pass statement with your code
-    pass
+    vowel_count = 0
+    for c in s:
+        if c.lower() in "aeiou":
+            vowel_count += 1
+    return vowel_count
 
 
 def at_beginning_or_end(part, whole):
     """
     Return True if the part is a prefix or a suffix of whole.
     """
-    # replace the pass statement with your code
-    pass
+    if whole.startswith(part) or whole.endswith(part):
+        return True
+    else:
+        return False
 
 
 def longest_string(strings):
@@ -104,10 +110,19 @@ def longest_string(strings):
     If there are multiple strings with the same maximum length, return
     the first one encountered.
     """
-    # replace the pass statement with your code
-    pass
+    longest_so_far = ""
+    for s in strings:
+        if len(s) > len(longest_so_far):
+            longest_so_far = s
+    return longest_so_far
+ 
+response = input("Enter strings separated by commas: ")
+strings = response.split(",")
+
+print(longest_string(strings))
 
 
+    
 def collatz(n):
     """
     Return the Collatz sequence starting from n.
@@ -117,8 +132,14 @@ def collatz(n):
     - If n is odd, the next term is 3n + 1.
     - The sequence ends when it reaches 1.
     """
-    # replace the pass statement with your code
-    pass
+    numbers = [n]
+    while n > 1:
+        if n % 2 != 0:
+            n = 3 * n + 1
+        else:
+            n = n // 2
+        numbers.append(n)
+    return numbers
 
 
 def test_print_square():
@@ -213,10 +234,10 @@ def test_collatz():
 test_print_square()
 test_is_odd()
 test_median_of_three()
-#test_factorial()
-#test_is_palindrome()
-#test_count_of_latin_vowels()
-#test_at_beginning_or_end()
-#test_longest_string()
-#test_collatz()
-#print("All tests passed!")
+test_factorial()
+test_is_palindrome()
+test_count_of_latin_vowels()
+test_at_beginning_or_end()
+test_longest_string()
+test_collatz()
+print("All tests passed!")
