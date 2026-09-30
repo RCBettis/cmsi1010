@@ -1,3 +1,3 @@
-# Petting Zoo
+# Lab04 Petting Zoo
 
-# We created a petting zoo by creating several functions and utilizing if-statements, while loops, string indexing/slicing, and boolean values. 
+# In this lab, we created a petting zoo by defining several functions and utilizing if-statements, while loops, string indexing/slicing, and boolean values. 
