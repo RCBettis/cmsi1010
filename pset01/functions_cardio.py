@@ -1,22 +1,4 @@
-# ----------------------------------------------------------------------
-# This is the file functions_cardio.py
-#
-# The intent is to give you practice writing functions.
-#
-# Complete the functions below.
-#
-# Each function has a docstring that describes what it should do, but
-# please see the unit tests at the bottom of the file for more
-# specific examples of what each function should return.
-#
-# Do not change the tests at the bottom of the file. They are there for
-# you to check your work. Just run this file with `python` or `python3`
-# (whichever works for your system).
-#
-# Remove this comment, and all of the "replace the pass statement..."
-# comments, prior to submission. You can, and should, add your own
-# comments, but please remove all the comments that are here now.
-# ----------------------------------------------------------------------
+
 
 
 def print_square(n):
@@ -28,9 +10,11 @@ def print_square(n):
     ***
     ***
     """
-    # replace the pass statement with your code
+   
     for _ in range(n):
         print("*" * n)
+
+# The loop runs n times. For each iteration, the interpter prints a string of n asterisks. 
 
 
 def is_odd(n):
@@ -43,6 +27,10 @@ def is_odd(n):
     else:
      return False
 
+# Expression n % 2 checks for remainder after n is divided by 2.
+# If the remainder is not equal to 0, the number is indeed odd. 
+# If the remainder is equal to 0, the number is even. 
+
 
 
 def median_of_three(a, b, c):
@@ -52,6 +40,10 @@ def median_of_three(a, b, c):
     nums = [a, b, c]
     nums.sort()
     return nums[1]
+
+# Creates a list named "nums" containing three values. 
+# Utilizes .sort() function to sort list from least to greatest
+# Uses an index to return the middle value (median) in list. 
 
 
 def is_palindrome(s):
@@ -63,6 +55,9 @@ def is_palindrome(s):
     reversal.
     """
     return s == s[::-1]
+
+# Returns "True" if s is equal to itself written backwards, or "False" otherwise.
+# s[::-1] uses string slicing with step -1 to create a reversed copy of string. 
 
 
 def factorial(n):
@@ -78,6 +73,10 @@ def factorial(n):
         product *= i
     return product
 
+# For loop iterates through a range (1, and up to, but not including n+1).
+# Each number, represented by variable "i"in the range, is multiplied by previous product.
+# Result of previous step becomes new value of "product" variable, and previous step repeats through entire range. 
+
 
 def count_of_latin_vowels(s):
     """
@@ -92,6 +91,11 @@ def count_of_latin_vowels(s):
             vowel_count += 1
     return vowel_count
 
+# Creates a variable called "vowel_count" and sets it equal to 0
+# Lowercases each character in word s and checks if each character is in string "aeiou"
+# If so, the "vowel_count" variable is incremented by one.
+# Number of vowels found is returned. 
+
 
 def at_beginning_or_end(part, whole):
     """
@@ -101,6 +105,8 @@ def at_beginning_or_end(part, whole):
         return True
     else:
         return False
+
+# Utilizes .startswith() and .endswith() functions to determine if argument "whole" starts with or ends with argument "part".
 
 
 def longest_string(strings):
@@ -120,6 +126,13 @@ response = input("Enter strings separated by commas: ")
 strings = response.split(",")
 
 print(longest_string(strings))
+
+# response is created to allow user to input a comma-separated list.
+# The list is then separated into individual strings and set equal to variable strings. 
+# for loop compares each string with the current longest_so_far value
+# If the string compared is longer than the current longest_so_far value, it becomes the new value for longest_so_far
+# This process repeats until every string is compared. 
+# Function returns longest string in initial list.
 
 
     
@@ -141,6 +154,12 @@ def collatz(n):
         numbers.append(n)
     return numbers
 
+# Creates a variable named "numbers" containing initial value n.
+# Loop continues until n becomes 1. 
+# If the remainder after n is divided by 2 is not equal to 0 (n is odd): perform 3 times n plus 1, and set n equal to result of this operation.
+# if the remainder after n is divided by 2 is equal to 0 (n is even): perform floor division by 2, and set n equal to result of this operation.
+# Add new n values to end of list.
+# Return completed list.
 
 def test_print_square():
     import io
