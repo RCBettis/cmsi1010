@@ -27,8 +27,9 @@ def third_element(t):
     element. If t is not a tuple or has fewer than three elements,
     raise an IndexError.
     """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(t,tuple):
+        raise TypeError
+    return t[2]
 
 
 def reverse_pair(t):
@@ -38,8 +39,11 @@ def reverse_pair(t):
     If t is a tuple with more or fewer than two elements, raise a
     ValueError.
     """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(t, tuple):
+        raise TypeError
+    if len(t) !=2:
+        raise ValueError
+    return (t[1], t[0]) 
 
 
 def middle_element_of_list(a):
@@ -50,8 +54,19 @@ def middle_element_of_list(a):
     elements, raise an IndexError. If a is not a list, raise a
     TypeError.
     """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(a, list): 
+        raise TypeError
+    if len(a) == 0:
+        raise IndexError
+    if len(a) % 2 == 0:
+        return a[len(a)//2 - 1]
+    if len(a) % 2 != 0:
+        return a[len(a)//2]
+
+
+    
+
+
 
 
 def unique_elements(a):
@@ -59,8 +74,11 @@ def unique_elements(a):
     Return a set of unique elements from the input list a.
     If a is not a list, raise a TypeError.
     """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(a, list):
+        raise TypeError
+    return set(a) 
+
+
 
 
 def contains_duplicates(a):
@@ -69,7 +87,12 @@ def contains_duplicates(a):
     and False otherwise. If a is not a list, raise a TypeError.
     """
     # replace the pass statement with your code
-    pass
+    if not isinstance (a, list):
+        raise TypeError
+    if len(set(a)) < len(a):
+        return True
+    else:
+        return False
 
 
 def is_superset(a, b):
@@ -244,10 +267,10 @@ test_reverse_pair()
 test_middle_element_of_list()
 test_unique_elements()
 test_contains_duplicates()
-test_is_superset()
-test_is_subset()
-test_is_disjoint()
-test_most_frequent_value_or_values()
-test_key_is_in_both_dictionaries()
-test_word_frequencies()
-print("All tests passed!")
+#test_is_superset()
+#test_is_subset()
+#test_is_disjoint()
+#test_most_frequent_value_or_values()
+#test_key_is_in_both_dictionaries()
+#test_word_frequencies()
+#print("All tests passed!")

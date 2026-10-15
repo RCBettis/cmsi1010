@@ -41,3 +41,20 @@
 #
 #   2. The possible "yes" answers should be stored in a set.
 # ----------------------------------------------------------------------
+
+templates = [
+    {
+        "text":  "A :adjective ghost is behind you!"
+        "author": "rtoal"
+    }
+    {
+        "text": "A :adjective ghost is behind you!"
+        "author": "rtoal"
+    }
+]
+
+yes_answers = {"yes", "si", "oui", "yup", "bet", "yep", "Y"}
+
+current_template = random.choice(templates)
+print(current_template)
+
