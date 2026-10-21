@@ -20,3 +20,12 @@ def factorial(n):
 
 print(factorial(5))
 print(factorial(4))
+
+def print_count_down(n):
+    if n<=0:
+      print("Boom")
+    else:
+     print(n)
+     print_count_down(n-1)
+
+print_count_down(10)
