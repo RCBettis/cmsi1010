@@ -89,10 +89,8 @@ def contains_duplicates(a):
     # replace the pass statement with your code
     if not isinstance (a, list):
         raise TypeError
-    if len(set(a)) < len(a):
-        return True
-    else:
-        return False
+    return len(set(a)) < len(a)
+       
 
 
 def is_superset(a, b):
@@ -100,7 +98,7 @@ def is_superset(a, b):
     Return True if set a is a superset of set b, and False otherwise.
     If either a or b is not a set, raise a TypeError.
     """
-    if not isinstance (a, list):
+    if not isinstance (a, set) or not isinstance (b, set):
         raise TypeError
     return set(a) >= set(b)
     
@@ -114,7 +112,9 @@ def is_subset(a, b):
     If either a or b is not a set, raise a TypeError.
     """
     # replace the pass statement with your code
-    pass
+    if not isinstance (a, set) or not isinstance (b, set):
+        raise TypeError
+    return set(a) < set(b)
 
 
 def is_disjoint(a, b):
@@ -123,7 +123,9 @@ def is_disjoint(a, b):
     and False otherwise. If either a or b is not a set, raise a TypeError.
     """
     # replace the pass statement with your code
-    pass
+    if not isinstance (a, set) or not isinstance (b, set):
+        raise TypeError
+    return not bool(a & b)
 
 
 def most_frequent_value_or_values(d):
@@ -135,7 +137,31 @@ def most_frequent_value_or_values(d):
     dictionary, raise a TypeError.
     """
     # replace the pass statement with your code
-    pass
+    
+    highest_count = 1 
+    result = set()
+    
+    if not isinstance (d, dict):
+        raise TypeError
+
+    if len(d.values()) == 0:
+        return set()
+    
+    values=list(d.values())
+
+    for value in values:
+        count = values.count(value)
+        if count > highest_count:
+            highest_count=count 
+    for value in values:
+        if values.count(value) == highest_count:
+            result.add(value)
+            
+    return result
+        
+
+
+
 
 
 def key_is_in_both_dictionaries(d1, d2, key):
@@ -145,7 +171,9 @@ def key_is_in_both_dictionaries(d1, d2, key):
     raise a TypeError.
     """
     # replace the pass statement with your code
-    pass
+    if not isinstance (d1, dict) or not isinstance (d2, dict):
+        raise TypeError
+    return key in d1 and key in d2
 
 
 def word_frequencies(s):
@@ -160,7 +188,25 @@ def word_frequencies(s):
     If s is not a string, raise a TypeError.
     """
     # replace the pass statement with your code
-    pass
+    
+   
+    word_frequency = {}
+   
+    if not isinstance (s, str):
+        raise TypeError
+    words = s.split()
+
+    for w in words:
+        count = words.count(w)
+        word_frequency[w] = count
+
+    return word_frequency
+        
+        
+
+
+    
+    
 
 
 def _assert_raises(exception_type, func, *args):
@@ -272,9 +318,9 @@ test_middle_element_of_list()
 test_unique_elements()
 test_contains_duplicates()
 test_is_superset()
-#test_is_subset()
-#test_is_disjoint()
-#test_most_frequent_value_or_values()
-#test_key_is_in_both_dictionaries()
-#test_word_frequencies()
-#print("All tests passed!")
+test_is_subset()
+test_is_disjoint()
+test_most_frequent_value_or_values()
+test_key_is_in_both_dictionaries()
+test_word_frequencies()
+print("All tests passed!")
