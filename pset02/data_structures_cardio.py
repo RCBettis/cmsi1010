@@ -100,8 +100,12 @@ def is_superset(a, b):
     Return True if set a is a superset of set b, and False otherwise.
     If either a or b is not a set, raise a TypeError.
     """
-    # replace the pass statement with your code
-    pass
+    if not isinstance (a, list):
+        raise TypeError
+    return set(a) >= set(b)
+    
+
+    
 
 
 def is_subset(a, b):
@@ -267,7 +271,7 @@ test_reverse_pair()
 test_middle_element_of_list()
 test_unique_elements()
 test_contains_duplicates()
-#test_is_superset()
+test_is_superset()
 #test_is_subset()
 #test_is_disjoint()
 #test_most_frequent_value_or_values()
