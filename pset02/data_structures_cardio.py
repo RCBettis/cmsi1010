@@ -1,24 +1,4 @@
-# ----------------------------------------------------------------------
-# This is the file data_structures_cardio.py
-#
-# The intent is to give you practice with tuples, lists, sets, and
-# dictionaries.
-#
-# Complete the functions below.
-#
-# Each function has a docstring that describes what it should do, but
-# please see the unit tests at the bottom of the file for more
-# specific examples of what each function should return. To run
-# the tests, you can use the command
-#
-#     python3 -m unittest data_structures_cardio.py
-#
-# (or python depending on your system).
-#
-# Remove this comment, and all of the "replace the pass statement..."
-# comments, prior to submission. You can, and should, add your own
-# comments, but please remove all the comments that are here now.
-# ----------------------------------------------------------------------
+
 
 
 def third_element(t):
@@ -86,7 +66,7 @@ def contains_duplicates(a):
     Return True if the input list a contains any duplicate elements,
     and False otherwise. If a is not a list, raise a TypeError.
     """
-    # replace the pass statement with your code
+    
     if not isinstance (a, list):
         raise TypeError
     return len(set(a)) < len(a)
@@ -111,7 +91,7 @@ def is_subset(a, b):
     Return True if set a is a subset of set b, and False otherwise.
     If either a or b is not a set, raise a TypeError.
     """
-    # replace the pass statement with your code
+    
     if not isinstance (a, set) or not isinstance (b, set):
         raise TypeError
     return set(a) < set(b)
@@ -122,7 +102,7 @@ def is_disjoint(a, b):
     Return True if sets a and b are disjoint (i.e., have no elements in common),
     and False otherwise. If either a or b is not a set, raise a TypeError.
     """
-    # replace the pass statement with your code
+    
     if not isinstance (a, set) or not isinstance (b, set):
         raise TypeError
     return not bool(a & b)
@@ -136,7 +116,7 @@ def most_frequent_value_or_values(d):
     set (because there are no elements to count). If d is not a
     dictionary, raise a TypeError.
     """
-    # replace the pass statement with your code
+    
     
     highest_count = 1 
     result = set()
@@ -170,7 +150,7 @@ def key_is_in_both_dictionaries(d1, d2, key):
     and False otherwise. If either d1 or d2 is not a dictionary,
     raise a TypeError.
     """
-    # replace the pass statement with your code
+   
     if not isinstance (d1, dict) or not isinstance (d2, dict):
         raise TypeError
     return key in d1 and key in d2
@@ -187,7 +167,7 @@ def word_frequencies(s):
 
     If s is not a string, raise a TypeError.
     """
-    # replace the pass statement with your code
+    
     
    
     word_frequency = {}
