@@ -6,11 +6,19 @@ class Person:
         self.mom = mom
         self.dad = dad
 
+    def is_sibling_of(self, other):
+            same_mom = self.mom is not None and other.mom is not None and self.mom is other.mom
+            same_dad = self.dad is not None and other.dad is not None and self.dad is other.dad
+            # Half or full, we don't care
+            return same_mom or same_dad
+    
     def __str__(self):
         span = f"({self.born or '?'}-{self.died or '?'})"
         mom = f"{self.mom.name if self.mom is not None else '?'}"
         dad = f"{self.dad.name if self.dad is not None else '?'}"
         return f"{self.name} {span} mom: {mom}, dad: {dad}"
+
+   
 
 
 odi = Person("Odelie Copele", born="1824", died="1873")
@@ -44,9 +52,14 @@ santo = Person("Santo Riggitano", born="1824", died="c1898", mom=concetta, dad=g
 salvatore = Person("Salvatore Riggitano", born="1876", died="1960", mom=maria, dad=santo)
 louis = Person("Louis Prevost", born="1920", died="1997", mom=suzanne, dad=salvatore)
 leo = Person("Robert Prevost", born="1955", mom=mildred, dad=louis)
+adele = Person("Adele Martinez", mom=marie, dad=jacques)
 
 print(marie)
 print(agenor)
 print(leo)
 print(louis)
 print(mildred)
+print(vittoria.is_sibling_of(pierre))
+print(adele.is_sibling_of(joseph))
+print(joseph.is_sibling_of(adele)) # should be true
+print(salvatore.is_sibling_of(louise)) # should be false
