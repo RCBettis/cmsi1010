@@ -11,12 +11,34 @@ class Person:
             same_dad = self.dad is not None and other.dad is not None and self.dad is other.dad
             # Half or full, we don't care
             return same_mom or same_dad
+    def is_parent_of(self, other):
+        """Return if this person is a parent of the other person."""
+        return other is not None and (other.mom is self or other.dad is self)
+
+    def is_child_of(self, other):
+        """Return if this person is a child of the other person."""
+        return other.is_parent_of(self)
+
+    def is_grandparent_of(self, other):
+        """Return if this person is a grandparent of another person."""
+        return other is not None and (
+            (other.mom is not None and self.is_parent_of(other.mom)) or
+            (other.dad is not None and self.is_parent_of(other.dad)))
     
     def __str__(self):
         span = f"({self.born or '?'}-{self.died or '?'})"
         mom = f"{self.mom.name if self.mom is not None else '?'}"
         dad = f"{self.dad.name if self.dad is not None else '?'}"
         return f"{self.name} {span} mom: {mom}, dad: {dad}"
+     
+    def print_family_tree(self, prefix="", level=0):
+        """Print the family tree starting from this person."""
+        indent = "    " * level
+        print(f"{prefix}{self.name} {self.born or '?'}-{self.died or '?'}")
+        if self.mom:
+            self.mom.print_family_tree(f"  {indent}mom: ", level + 1)
+        if self.dad:
+            self.dad.print_family_tree(f"  {indent}dad: ", level + 1)
 
    
 
@@ -60,6 +82,16 @@ print(leo)
 print(louis)
 print(mildred)
 print(vittoria.is_sibling_of(pierre))
-print(adele.is_sibling_of(joseph))
 print(joseph.is_sibling_of(adele)) # should be true
 print(salvatore.is_sibling_of(louise)) # should be false
+
+leo.print_family_tree()
+
+
+
+
+
+
+p1 = Person("Adele Martinez", mom=Person("Marie Ramos"), dad=Person("Jacques Martinez"))
+p2 = Person("Joseph Martinez", mom=Person("Marie Ramos"), dad=Person("Jacques Martinez"))
+print(p1.is_sibling_of(p2))
