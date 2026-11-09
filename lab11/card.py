@@ -35,4 +35,3 @@ def deal_one_five_card_hand():
     deck = shuffled_deck()
     return set(deck[:5])
 
-print(deal_one_five_card_hand())
