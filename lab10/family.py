@@ -25,6 +25,54 @@ class Person:
             (other.mom is not None and self.is_parent_of(other.mom)) or
             (other.dad is not None and self.is_parent_of(other.dad)))
     
+   
+    def grandparents_of(self):
+       known_grandparents = []
+       
+       if self.mom is None:
+        known_grandparents.append("Maternal Grandparents Unknown")
+       else:
+           mom=self.mom
+
+           if mom.mom is not None:
+             known_grandparents.append(mom.mom.name)
+           elif mom.mom is None:
+             known_grandparents.append("Unknown")
+
+           if mom.dad is not None:
+             known_grandparents.append(mom.dad.name)
+           elif mom.dad is None:
+             known_grandparents.append("Unknown")
+           
+       if self.dad is None:
+           known_grandparents.append("Paternal Grandparents Unknown")
+       else:
+           dad=self.dad
+          
+           if dad.mom is not None:
+            known_grandparents.append(dad.mom.name)
+           elif dad.mom is None:
+            known_grandparents.append("Unknown")
+
+           if dad.dad is not None:
+             known_grandparents.append(dad.dad.name)
+           elif dad.dad is None:
+             known_grandparents.append("Unknown")
+
+       return f"The grandparents of {self.name} are {known_grandparents}"
+           
+       
+    
+            
+           
+           
+        
+       
+           
+       
+          
+        
+    
     def __str__(self):
         span = f"({self.born or '?'}-{self.died or '?'})"
         mom = f"{self.mom.name if self.mom is not None else '?'}"
@@ -44,7 +92,9 @@ class Person:
 
 
 odi = Person("Odelie Copele", born="1824", died="1873")
-paul = Person("Paul Grambois", born="1806")
+jean = Person("Jean Grambois", born="1778")
+therese= Person("Therese Anne Paul", born="1781")
+paul = Person("Paul Grambois", born="1806", died="1876", mom=therese, dad=jean)
 eugenie = Person("Eugénie Granbois", born="1838", died="1907", mom=odi, dad=paul)
 celeste = Person("Céleste Lamelle", born="1814", died="1877")
 joey_b = Person("Joey Baquié", born="1811", died="1882")
@@ -55,7 +105,7 @@ agenor = Person("Agenor Ramos", born="1803", died="1846")
 marie = Person("Marie Ramos", born="1826", died="1904", mom=julie, dad=agenor)
 marge = Person("Marguerite Cadeneth", born="1804", died="1870")
 giacamo = Person("Giacamo Martino", born="1806", died="1852")
-jacques = Person("Jacques Martinez", born="1822", died="1891", mom=marge, dad=giacamo)
+jacques = Person("Jacques Martinez", born="1822", died="1891", mom=marge)
 joseph = Person("Joseph Martinez", born="1864", died="1926", mom=marie, dad=jacques)
 mildred = Person("Mildred Martinez", born="1911", died="1990", mom=louise, dad=joseph)
 jeanne_c = Person("Jeanne Chauvin", born="1840", died="1866")
@@ -69,12 +119,14 @@ vittoria = Person("Vittoria Trusiano", born="1813", died="1880")
 francesco = Person("Francesco Alioto", born="c1813", died="c1880")
 maria = Person("Maria Alioto", born="1834", died=">1908", mom=vittoria, dad=francesco)
 concetta = Person("Concetta Buccafusca", born="c1795", died="1843")
-giuseppe = Person("Giuseppe Riggitano", born="c1786", died="1864")
+santi = Person("Santi Riggitano", born="c1754", died="c1814")
+giuseppe = Person("Giuseppe Riggitano", born="c1786", died="1864", dad=santi)
 santo = Person("Santo Riggitano", born="1824", died="c1898", mom=concetta, dad=giuseppe)
 salvatore = Person("Salvatore Riggitano", born="1876", died="1960", mom=maria, dad=santo)
 louis = Person("Louis Prevost", born="1920", died="1997", mom=suzanne, dad=salvatore)
 leo = Person("Robert Prevost", born="1955", mom=mildred, dad=louis)
 adele = Person("Adele Martinez", mom=marie, dad=jacques)
+
 
 print(marie)
 print(agenor)
@@ -95,3 +147,8 @@ leo.print_family_tree()
 p1 = Person("Adele Martinez", mom=Person("Marie Ramos"), dad=Person("Jacques Martinez"))
 p2 = Person("Joseph Martinez", mom=Person("Marie Ramos"), dad=Person("Jacques Martinez"))
 print(p1.is_sibling_of(p2))
+
+print(leo.grandparents_of())
+print(paul.grandparents_of())
+print(joseph.grandparents_of())
+print(jean.grandparents_of())
