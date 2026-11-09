@@ -1,26 +1,38 @@
 from dataclasses import dataclass
+from random import shuffle
+
 @dataclass (frozen=True)
 class Card:
     suit: str
     rank: int
 
-def __post_init__(self):
+    def __post_init__(self):
         if self.suit not in ("S", "H", "D", "C"):
             raise ValueError("suit must be one of 'S', 'H', 'D', 'C'")
         if self.rank not in range(1, 14):
             raise ValueError("rank must be an integer between 1 and 13")
-def __str__(self):
-        match self.suit:
-            case "S": suit_str = "♠"
-            case "H": suit_str = "♥"
-            case "D": suit_str = "♦"
-            case _: suit_str = "♣"
-        match self.rank:
-            case 1: rank_str = "A"
-            case 11: rank_str = "J"
-            case 12: rank_str = "Q"
-            case 13: rank_str = "K"
-            case _: rank_str = str(self.rank)
+    def __str__(self):
+        suit_str = {"S": "♠", "H": "♥", "D": "♦", "C": "♣"}[self.suit]
+        rank_str = {1: "A", 11: "J", 12: "Q", 13: "K"}.get(self.rank, str(self.rank))
         return f"{rank_str}{suit_str}"
 
-print(Card("Hearts", 3))
+print(Card("S", 1))
+print(Card("H", 11))
+print(Card(rank=3, suit="C"))
+print(Card("H", 12))
+
+def standard_deck():
+    return [Card(suit, rank) for suit in "SHDC" for rank in range(1, 14)]
+
+
+def shuffled_deck():
+    cards = standard_deck()
+    shuffle(cards)
+    return cards
+
+
+def deal_one_five_card_hand():
+    deck = shuffled_deck()
+    return set(deck[:5])
+
+print(deal_one_five_card_hand())
