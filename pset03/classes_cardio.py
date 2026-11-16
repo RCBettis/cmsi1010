@@ -23,14 +23,44 @@ import math
 # also have a __str__ method that returns a string representation
 # in a form you can infer from the unit tests below.
 
-# ...
+class Rectangle:
+    def __init__(self, length, width):
+     self.width = width
+     self.length = length
+
+    def area(self):
+     if self.width and self.length > 0:
+         return self.width * self.length
+    
+    def perimeter(self):
+     if self.width and self.length > 0:
+        return(self.width * 2) + (self.length * 2)
+        
+    def __str__(self):
+         return f"Rectangle({self.length} x {self.width})"
+
+    
 
 # Write a class called Circle, with an attribute radius,
 # and methods to calculate the area and circumference.
 # Implement the __str__ method according to the unit tests
 # below.
 
-# ...
+class Circle:
+ def __init__ (self, radius):
+   self.radius = radius
+
+ def area(self):
+   if self.radius > 0:
+    return math.pi * (self.radius**2)
+
+ def circumference(self):
+   if self.radius > 0:
+      return 2 * math.pi * self.radius 
+
+ def __str__(self):
+   return f"Circle(radius={self.radius})"
+
 
 
 # Write a class called Song, with attributes title, artist, and
