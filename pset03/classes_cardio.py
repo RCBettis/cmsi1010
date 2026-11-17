@@ -69,7 +69,18 @@ class Circle:
 # according the unit tests below, and a method called play that
 # prints a message inferrable from the unit tests below.
 
-# ...
+class Song:
+   def __init__(self, title, artist, duration):
+      self.title= title
+      self.artist= artist
+      self.duration= duration
+
+   def play(self):
+      print (f"Playing {self.title} by {self.artist} ({self.duration}s)")
+
+   def __str__(self):
+      return f"{self.title} by {self.artist} ({self.duration}s)"
+      
 
 
 # Write a class called Playlist, which contains a list of Song
@@ -79,7 +90,42 @@ class Circle:
 # (duration)s" and separated by a pipe character (|). If the playlist
 # is empty, the __str__ method should return "Playlist is empty."
 
-# ...
+class Playlist:
+
+    
+  
+ def __init__(self):
+       self.playlist = []
+
+ def add_song(self,song):
+      self.playlist.append(song)
+
+
+ def __str__(self):
+    song_strings= []
+    if len(self.playlist) <= 0:
+      return f"Playlist is empty"
+    else:
+     for s in self.playlist:
+       song_strings.append(str(s))
+       result= "|".join(song_strings)
+       
+    return result
+    
+
+ def play_all(self):
+     for s in self.playlist:
+      s.play()
+
+ 
+ 
+    
+      
+
+    
+
+      
+      
 
 # Keep the following tests in your file. Use them as you do the work
 # in this assignment. (And remember to remove this comment before
