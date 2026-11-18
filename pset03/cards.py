@@ -36,27 +36,7 @@ def deal_one_five_card_hand():
     return set(deck[:5])
 
 
-def deal(number_of_hands, cards_per_hand):
-    if not isinstance(number_of_hands, int):
-        raise TypeError("Need an integer number of hands")
-    if not isinstance(cards_per_hand, int):
-        raise TypeError("Need an integer number of cards per hand")
-    if number_of_hands <= 0:
-        raise ValueError("Too few hands")
-    if cards_per_hand <= 0:
-        raise ValueError("Too few cards per hand")
-    if number_of_hands * cards_per_hand > 52:
-        raise ValueError(
-            "Numbers of hands times number of cards per hand has to equal "
-            "52 or less"
-        )
 
-    deck = shuffled_deck()
-    all_hands = []
-    for i in range(number_of_hands):
-        hand = set(deck[i * cards_per_hand:(i + 1) * cards_per_hand])
-        all_hands.append(hand)
-    return all_hands
 
 
 def poker_classification(hand):
