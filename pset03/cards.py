@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from random import shuffle
 from collections import Counter
 
+
 @dataclass(frozen=True)
 class Card:
     suit: str
@@ -36,7 +37,6 @@ def deal_one_five_card_hand():
 
 
 def deal(number_of_hands, cards_per_hand):
-    
     if not isinstance(number_of_hands, int):
         raise TypeError("Need an integer number of hands")
     if not isinstance(cards_per_hand, int):
@@ -46,46 +46,38 @@ def deal(number_of_hands, cards_per_hand):
     if cards_per_hand <= 0:
         raise ValueError("Too few cards per hand")
     if number_of_hands * cards_per_hand > 52:
-        raise ValueError("Numbers of hands times number of cards per hand has to equal 52 or less")
+        raise ValueError(
+            "Numbers of hands times number of cards per hand has to equal "
+            "52 or less"
+        )
 
     deck = shuffled_deck()
-    
-    all_hands=[]
+    all_hands = []
     for i in range(number_of_hands):
-        hand = set(deck[i*cards_per_hand : (i+1)*cards_per_hand])
+        hand = set(deck[i * cards_per_hand:(i + 1) * cards_per_hand])
         all_hands.append(hand)
     return all_hands
 
 
 def poker_classification(hand):
-    # Returns a string describing the poker hand. First, validate the input
-    # to make sure it is a set of 5 cards, and raise the appropriate error
-    # (TypeError or ValueError) if necessary.
-    #
-    # Then return one of the following strings:
-    # "High Card", "One Pair", "Two Pair", "Three of a Kind",
-    # "Straight", "Flush", "Full House", "Four of a Kind",
-    # "Straight Flush", "Royal Flush"
-    #
-    # Make sure to remove this comment and the pass statement below
-    # before submitting.
-    pass
-
-    if not isinstance(hand,set):
-      raise TypeError('Hand must be a set for poker')
+    if not isinstance(hand, set):
+        raise TypeError("Hand must be a set for poker")
     if len(hand) != 5:
-      raise ValueError("Hand must have five cards")
+        raise ValueError("Hand must have five cards")
+
     ranks = tuple(sorted(card.rank for card in hand))
     suits = {card.suit for card in hand}
 
     is_flush = len(suits) == 1
+    is_royal_ranks = ranks == (1, 10, 11, 12, 13)
+    is_low_ace_straight = ranks == (1, 2, 3, 4, 5)
+    is_normal_straight = (
+        ranks == tuple(range(ranks[0], ranks[0] + 5))
+        if ranks[0] <= 9
+        else False
+    )
+    is_straight = is_low_ace_straight or is_normal_straight or is_royal_ranks
 
-    # Ace-high straight is (1, 10, 11, 12, 13) since Ace = 1
-    is_royal_ranks = (ranks == (1, 10, 11, 12, 13))
-    is_straight = (ranks == tuple(
-        range(ranks[0], ranks[0] + 5))) or is_royal_ranks
-
-    # Count frequencies of each rank
     counts = tuple(sorted(Counter(ranks).values(), reverse=True))
 
     if is_straight and is_flush:
@@ -108,6 +100,3 @@ def poker_classification(hand):
         return "One Pair"
 
     return "High Card"
-
-
-
